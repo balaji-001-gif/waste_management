@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      mariadb:
+        image: mariadb:10.5
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: frappe
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd "mysqladmin ping --silent"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - name: Install system deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git mariadb-client redis-server libmysqlclient-dev
+      - name: Install bench & frappe
+        run: |
+          pip install --upgrade pip
+          pip install frappe-bench
+          bench init test-bench --skip-assets --frappe-branch version-15
+      - name: Install app dependencies
+        working-directory: test-bench/apps/waste_management
+        run: |
+          pip install -r requirements.txt
+      - name: Lint
+        run: |
+          pip install flake8
+          flake8 waste_management
+      - name: Run tests
+        working-directory: test-bench/apps/waste_management
+        run: |
+          pip install pytest
+          pytest tests
