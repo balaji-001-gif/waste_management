@@ -42,18 +42,20 @@ def _create_default_categories():
 
 def _create_default_zones():
     default_zones = [
-        {"zone_name": "North Zone", "description": "Northern part of the city"},
-        {"zone_name": "South Zone", "description": "Southern part of the city"},
-        {"zone_name": "East Zone",  "description": "Eastern part of the city"},
-        {"zone_name": "West Zone",  "description": "Western part of the city"},
+        {"zone_name": "North Zone", "zone_code": "NZ", "description": "Northern part of the city"},
+        {"zone_name": "South Zone", "zone_code": "SZ", "description": "Southern part of the city"},
+        {"zone_name": "East Zone",  "zone_code": "EZ", "description": "Eastern part of the city"},
+        {"zone_name": "West Zone",  "zone_code": "WZ", "description": "Western part of the city"},
     ]
     for zone in default_zones:
-        if not frappe.db.exists("Waste Zone", {"zone_name": zone["zone_name"]}):
+        if not frappe.db.exists("Waste Zone", {"zone_code": zone["zone_code"]}):
             frappe.get_doc({
                 "doctype": "Waste Zone",
                 "zone_name": zone["zone_name"],
+                "zone_code": zone["zone_code"],
                 "description": zone["description"],
             }).insert(ignore_permissions=True)
+
 
 
 def _add_custom_fields():
