@@ -2,42 +2,61 @@
 
 import frappe
 
+
 def after_install():
     """Seed default data for the Waste Management app after installation."""
-    # Create default Waste Categories
+    _create_default_categories()
+    _create_default_zones()
+    _add_custom_fields()
+    frappe.db.commit()
+    frappe.msgprint("🗑️ Waste Management default data installed successfully.")
+
+
+def after_migrate():
+    """Placeholder for post‑migration actions if needed in the future."""
+    pass
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+def _create_default_categories():
     default_categories = [
-        {"category_name": "Organic", "description": "Food waste, garden waste"},
-        {"category_name": "Plastic", "description": "PET, HDPE, PVC, etc."},
-        {"category_name": "Metal", "description": "Ferrous and non‑ferrous metals"},
+        {"category_name": "Organic",    "description": "Food waste, garden waste"},
+        {"category_name": "Plastic",    "description": "PET, HDPE, PVC, etc."},
+        {"category_name": "Metal",      "description": "Ferrous and non‑ferrous metals"},
         {"category_name": "Electronic", "description": "E‑waste and appliances"},
-        {"category_name": "Hazardous", "description": "Chemicals, medical waste"},
+        {"category_name": "Hazardous",  "description": "Chemicals, medical waste"},
     ]
     for cat in default_categories:
+        # Generate a simple code from the name (first three letters uppercase)
+        cat_code = cat["category_name"][:3].upper()
         if not frappe.db.exists("Waste Category", {"category_name": cat["category_name"]}):
-            doc = frappe.get_doc({
+            frappe.get_doc({
                 "doctype": "Waste Category",
                 "category_name": cat["category_name"],
-                "description": cat["description"]
-            })
-            doc.insert(ignore_permissions=True)
+                "category_code": cat_code,
+                "description": cat["description"],
+            }).insert(ignore_permissions=True)
 
-    # Create default Waste Zones
+
+def _create_default_zones():
     default_zones = [
         {"zone_name": "North Zone", "description": "Northern part of the city"},
         {"zone_name": "South Zone", "description": "Southern part of the city"},
-        {"zone_name": "East Zone", "description": "Eastern part of the city"},
-        {"zone_name": "West Zone", "description": "Western part of the city"},
+        {"zone_name": "East Zone",  "description": "Eastern part of the city"},
+        {"zone_name": "West Zone",  "description": "Western part of the city"},
     ]
     for zone in default_zones:
         if not frappe.db.exists("Waste Zone", {"zone_name": zone["zone_name"]}):
-            doc = frappe.get_doc({
+            frappe.get_doc({
                 "doctype": "Waste Zone",
                 "zone_name": zone["zone_name"],
-                "description": zone["description"]
-            })
-            doc.insert(ignore_permissions=True)
+                "description": zone["description"],
+            }).insert(ignore_permissions=True)
 
-    # Add custom fields to ERPNext standard DocTypes (Customer, Sales Invoice)
+
+def _add_custom_fields():
     custom_fields = {
         "Customer": [
             {
@@ -69,5 +88,3 @@ def after_install():
                     "options": field.get("options", ""),
                     "insert_after": field["insert_after"],
                 }).insert(ignore_permissions=True)
-
-    frappe.msgprint("🗑️ Waste Management default data installed successfully.")
