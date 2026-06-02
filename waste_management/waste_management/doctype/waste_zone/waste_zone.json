@@ -1,0 +1,119 @@
+{
+    "name": "Waste Zone",
+    "module": "Waste Management",
+    "doctype": "DocType",
+    "is_submittable": 0,
+    "track_changes": 1,
+    "fields": [
+        {
+            "fieldname": "zone_name",
+            "fieldtype": "Data",
+            "label": "Zone Name",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "zone_code",
+            "fieldtype": "Data",
+            "label": "Zone Code",
+            "reqd": 1
+        },
+        {
+            "fieldname": "zone_type",
+            "fieldtype": "Select",
+            "label": "Zone Type",
+            "options": "Residential\nCommercial\nIndustrial\nMedical\nMixed",
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "address_section",
+            "fieldtype": "Section Break",
+            "label": "Address Information"
+        },
+        {
+            "fieldname": "city",
+            "fieldtype": "Data",
+            "label": "City"
+        },
+        {
+            "fieldname": "state",
+            "fieldtype": "Data",
+            "label": "State"
+        },
+        {
+            "fieldname": "country",
+            "fieldtype": "Link",
+            "options": "Country",
+            "label": "Country"
+        },
+        {
+            "fieldname": "latitude",
+            "fieldtype": "Float",
+            "label": "Latitude"
+        },
+        {
+            "fieldname": "longitude",
+            "fieldtype": "Float",
+            "label": "Longitude"
+        },
+        {
+            "fieldname": "area_sq_km",
+            "fieldtype": "Float",
+            "label": "Area (sq km)"
+        },
+        {
+            "fieldname": "population_estimate",
+            "fieldtype": "Int",
+            "label": "Population Estimate"
+        },
+        {
+            "fieldname": "collection_section",
+            "fieldtype": "Section Break",
+            "label": "Collection Details"
+        },
+        {
+            "fieldname": "collection_frequency",
+            "fieldtype": "Select",
+            "label": "Collection Frequency",
+            "options": "Daily\nAlternate Days\nWeekly\nBi-Weekly\nMonthly"
+        },
+        {
+            "fieldname": "collection_days",
+            "fieldtype": "Data",
+            "label": "Collection Days (e.g., Mon,Wed,Fri)"
+        },
+        {
+            "fieldname": "estimated_waste_per_day_kg",
+            "fieldtype": "Float",
+            "label": "Estimated Waste Per Day (kg)"
+        },
+        {
+            "fieldname": "zone_manager",
+            "fieldtype": "Link",
+            "options": "User",
+            "label": "Zone Manager"
+        },
+        {
+            "fieldname": "is_active",
+            "fieldtype": "Check",
+            "label": "Is Active",
+            "default": "1"
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1
+        },
+        {
+            "role": "Waste Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1
+        }
+    ],
+    "autoname": "field:zone_code"
+}

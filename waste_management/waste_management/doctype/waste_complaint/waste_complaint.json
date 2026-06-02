@@ -1,0 +1,143 @@
+{
+    "name": "Waste Complaint",
+    "module": "Waste Management",
+    "doctype": "DocType",
+    "is_submittable": 1,
+    "track_changes": 1,
+    "fields": [
+        {
+            "fieldname": "complaint_title",
+            "fieldtype": "Data",
+            "label": "Complaint Title",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "complaint_date",
+            "fieldtype": "Date",
+            "label": "Complaint Date",
+            "reqd": 1,
+            "default": "Today"
+        },
+        {
+            "fieldname": "complaint_type",
+            "fieldtype": "Select",
+            "label": "Complaint Type",
+            "options": "Missed Collection\nDelayed Collection\nImproper Disposal\nVehicle Issues\nDriver Behavior\nOverflowing Bins\nOther",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "priority",
+            "fieldtype": "Select",
+            "label": "Priority",
+            "options": "Low\nMedium\nHigh\nCritical",
+            "default": "Medium"
+        },
+        {
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "label": "Status",
+            "options": "Open\nIn Review\nResolved\nClosed",
+            "default": "Open",
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "customer",
+            "fieldtype": "Link",
+            "options": "Customer",
+            "label": "Customer"
+        },
+        {
+            "fieldname": "zone",
+            "fieldtype": "Link",
+            "options": "Waste Zone",
+            "label": "Zone"
+        },
+        {
+            "fieldname": "related_request",
+            "fieldtype": "Link",
+            "options": "Waste Collection Request",
+            "label": "Related Collection Request"
+        },
+        {
+            "fieldname": "complaint_description",
+            "fieldtype": "Text Editor",
+            "label": "Complaint Description",
+            "reqd": 1
+        },
+        {
+            "fieldname": "photo_evidence",
+            "fieldtype": "Attach Image",
+            "label": "Photo Evidence"
+        },
+        {
+            "fieldname": "assigned_to",
+            "fieldtype": "Link",
+            "options": "User",
+            "label": "Assigned To"
+        },
+        {
+            "fieldname": "resolution_section",
+            "fieldtype": "Section Break",
+            "label": "Resolution Details"
+        },
+        {
+            "fieldname": "resolution_notes",
+            "fieldtype": "Text Editor",
+            "label": "Resolution Notes"
+        },
+        {
+            "fieldname": "resolved_date",
+            "fieldtype": "Date",
+            "label": "Resolved Date",
+            "read_only": 1
+        },
+        {
+            "fieldname": "feedback_section",
+            "fieldtype": "Section Break",
+            "label": "Customer Feedback"
+        },
+        {
+            "fieldname": "feedback_rating",
+            "fieldtype": "Select",
+            "label": "Feedback Rating",
+            "options": "\n1 Star\n2 Stars\n3 Stars\n4 Stars\n5 Stars"
+        },
+        {
+            "fieldname": "feedback_notes",
+            "fieldtype": "Text",
+            "label": "Feedback Notes"
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1,
+            "submit": 1
+        },
+        {
+            "role": "Waste Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "submit": 1
+        },
+        {
+            "role": "Waste Operator",
+            "read": 1,
+            "write": 1,
+            "create": 1
+        },
+        {
+            "role": "Customer",
+            "read": 1,
+            "create": 1
+        }
+    ],
+    "autoname": "naming_series:",
+    "naming_series": "WCP-.YYYY.-.####"
+}

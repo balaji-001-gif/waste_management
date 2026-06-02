@@ -1,0 +1,126 @@
+{
+    "name": "Waste Vehicle",
+    "module": "Waste Management",
+    "doctype": "DocType",
+    "track_changes": 1,
+    "fields": [
+        {
+            "fieldname": "vehicle_number",
+            "fieldtype": "Data",
+            "label": "Vehicle Number",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "vehicle_type",
+            "fieldtype": "Select",
+            "label": "Vehicle Type",
+            "options": "Compactor Truck\nTipper Truck\nRoll-on Roll-off\nMini Truck\nHandcart\nElectric Vehicle",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "vehicle_status",
+            "fieldtype": "Select",
+            "label": "Vehicle Status",
+            "options": "Available\nIn Service\nUnder Maintenance\nOut of Service",
+            "default": "Available",
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "capacity_kg",
+            "fieldtype": "Float",
+            "label": "Capacity (kg)",
+            "reqd": 1
+        },
+        {
+            "fieldname": "fuel_type",
+            "fieldtype": "Select",
+            "label": "Fuel Type",
+            "options": "Diesel\nPetrol\nCNG\nElectric\nHybrid"
+        },
+        {
+            "fieldname": "manufacture_year",
+            "fieldtype": "Int",
+            "label": "Manufacture Year"
+        },
+        {
+            "fieldname": "last_service_date",
+            "fieldtype": "Date",
+            "label": "Last Service Date"
+        },
+        {
+            "fieldname": "next_service_date",
+            "fieldtype": "Date",
+            "label": "Next Service Date"
+        },
+        {
+            "fieldname": "current_mileage_km",
+            "fieldtype": "Float",
+            "label": "Current Mileage (km)"
+        },
+        {
+            "fieldname": "gps_device_id",
+            "fieldtype": "Data",
+            "label": "GPS Device ID"
+        },
+        {
+            "fieldname": "current_latitude",
+            "fieldtype": "Float",
+            "label": "Current Latitude"
+        },
+        {
+            "fieldname": "current_longitude",
+            "fieldtype": "Float",
+            "label": "Current Longitude"
+        },
+        {
+            "fieldname": "assigned_driver",
+            "fieldtype": "Link",
+            "options": "Waste Driver",
+            "label": "Assigned Driver"
+        },
+        {
+            "fieldname": "assigned_zone",
+            "fieldtype": "Link",
+            "options": "Waste Zone",
+            "label": "Assigned Zone"
+        },
+        {
+            "fieldname": "insurance_expiry",
+            "fieldtype": "Date",
+            "label": "Insurance Expiry Date"
+        },
+        {
+            "fieldname": "fitness_certificate_expiry",
+            "fieldtype": "Date",
+            "label": "Fitness Certificate Expiry"
+        },
+        {
+            "fieldname": "emission_standard",
+            "fieldtype": "Select",
+            "label": "Emission Standard",
+            "options": "BS3\nBS4\nBS6\nEuro5\nEuro6\nZero Emission"
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1
+        },
+        {
+            "role": "Waste Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1
+        },
+        {
+            "role": "Waste Driver",
+            "read": 1
+        }
+    ],
+    "autoname": "field:vehicle_number"
+}

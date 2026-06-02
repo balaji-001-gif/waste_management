@@ -1,0 +1,96 @@
+<div class="waste-dashboard-container">
+    <div class="dashboard-header">
+        <h1 class="dashboard-title">Smart Waste Management Analytics</h1>
+        <p class="dashboard-subtitle">Real-time operational metrics & AI-driven insights</p>
+    </div>
+
+    <!-- KPI Section -->
+    <div class="kpi-grid">
+        <div class="kpi-card card-green">
+            <div class="kpi-content">
+                <span class="kpi-label">Today's Collections</span>
+                <span class="kpi-value" id="kpi-today-collections">0</span>
+                <div class="kpi-indicator"><span class="arrow-up">▲</span> +12.4% vs last week</div>
+            </div>
+            <div class="kpi-icon">♻️</div>
+        </div>
+
+        <div class="kpi-card card-blue">
+            <div class="kpi-content">
+                <span class="kpi-label">Active Fleet</span>
+                <span class="kpi-value" id="kpi-active-fleet">0</span>
+                <div class="kpi-indicator">88% current dispatch rate</div>
+            </div>
+            <div class="kpi-icon">🚚</div>
+        </div>
+
+        <div class="kpi-card card-purple">
+            <div class="kpi-content">
+                <span class="kpi-label">Recycled Weight</span>
+                <span class="kpi-value" id="kpi-recycled-weight">0 kg</span>
+                <div class="kpi-indicator"><span class="arrow-up">▲</span> +4.3% this week</div>
+            </div>
+            <div class="kpi-icon">🌱</div>
+        </div>
+
+        <div class="kpi-card card-orange">
+            <div class="kpi-content">
+                <span class="kpi-label">Avg Driver Rating</span>
+                <span class="kpi-value" id="kpi-driver-rating">0.0 ★</span>
+                <div class="kpi-indicator">Based on completions</div>
+            </div>
+            <div class="kpi-icon">⭐</div>
+        </div>
+
+        <div class="kpi-card card-red">
+            <div class="kpi-content">
+                <span class="kpi-label">Active Complaints</span>
+                <span class="kpi-value" id="kpi-pending-complaints">0</span>
+                <div class="kpi-indicator">Resolution time < 2 hrs</div>
+            </div>
+            <div class="kpi-icon">⚠️</div>
+        </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="charts-grid">
+        <div class="chart-container glass-panel">
+            <h3 class="chart-title">Collection Weight (AI Forecast vs Actuals)</h3>
+            <div id="chart-weight-trends" class="plotly-chart"></div>
+        </div>
+        <div class="chart-container glass-panel">
+            <h3 class="chart-title">Waste Category Breakdown</h3>
+            <div id="chart-category-dist" class="plotly-chart"></div>
+        </div>
+    </div>
+
+    <!-- Details Section -->
+    <div class="details-grid">
+        <div class="details-panel glass-panel">
+            <h3 class="panel-title">Landfills & Disposal Site Capacity</h3>
+            <div class="site-list" id="site-capacity-list">
+                <!-- Dynamically filled by JS -->
+            </div>
+        </div>
+        <div class="details-panel glass-panel">
+            <h3 class="panel-title">Recent Waste Collection Requests</h3>
+            <div class="table-responsive">
+                <table class="dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Zone</th>
+                            <th>Category</th>
+                            <th>Priority</th>
+                            <th>AI Risk</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recent-requests-table">
+                        <!-- Dynamically filled by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

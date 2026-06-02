@@ -1,0 +1,76 @@
+{
+    "name": "AI Waste Prediction",
+    "module": "Waste Management",
+    "doctype": "DocType",
+    "track_changes": 1,
+    "fields": [
+        {
+            "fieldname": "prediction_date",
+            "fieldtype": "Date",
+            "label": "Prediction Date",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "zone",
+            "fieldtype": "Link",
+            "options": "Waste Zone",
+            "label": "Zone",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "waste_category",
+            "fieldtype": "Link",
+            "options": "Waste Category",
+            "label": "Waste Category",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "predicted_weight_kg",
+            "fieldtype": "Float",
+            "label": "Predicted Weight (kg)"
+        },
+        {
+            "fieldname": "actual_weight_kg",
+            "fieldtype": "Float",
+            "label": "Actual Weight (kg)"
+        },
+        {
+            "fieldname": "variance_kg",
+            "fieldtype": "Float",
+            "label": "Variance (kg)",
+            "read_only": 1
+        },
+        {
+            "fieldname": "accuracy_percentage",
+            "fieldtype": "Percent",
+            "label": "Accuracy (%)",
+            "read_only": 1
+        },
+        {
+            "fieldname": "is_validated",
+            "fieldtype": "Check",
+            "label": "Is Validated",
+            "default": "0"
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1
+        },
+        {
+            "role": "Waste Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1
+        }
+    ],
+    "autoname": "naming_series:",
+    "naming_series": "WM-PRED-.YYYY.-.####"
+}

@@ -1,0 +1,273 @@
+{
+    "name": "Waste Collection Request",
+    "module": "Waste Management",
+    "doctype": "DocType",
+    "is_submittable": 1,
+    "track_changes": 1,
+    "title_field": "request_title",
+    "fields": [
+        {
+            "fieldname": "request_title",
+            "fieldtype": "Data",
+            "label": "Request Title",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "request_date",
+            "fieldtype": "Date",
+            "label": "Request Date",
+            "reqd": 1,
+            "default": "Today"
+        },
+        {
+            "fieldname": "request_type",
+            "fieldtype": "Select",
+            "label": "Request Type",
+            "options": "Scheduled\nOn-Demand\nEmergency",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "label": "Status",
+            "options": "Draft\nPending\nAssigned\nIn Progress\nCompleted\nCancelled",
+            "default": "Pending",
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "priority",
+            "fieldtype": "Select",
+            "label": "Priority",
+            "options": "Low\nMedium\nHigh\nCritical",
+            "default": "Medium"
+        },
+        {
+            "fieldname": "customer_section",
+            "fieldtype": "Section Break",
+            "label": "Customer Information"
+        },
+        {
+            "fieldname": "customer",
+            "fieldtype": "Link",
+            "options": "Customer",
+            "label": "Customer"
+        },
+        {
+            "fieldname": "customer_name",
+            "fieldtype": "Data",
+            "label": "Customer Name",
+            "fetch_from": "customer.customer_name"
+        },
+        {
+            "fieldname": "contact_number",
+            "fieldtype": "Data",
+            "label": "Contact Number"
+        },
+        {
+            "fieldname": "pickup_address",
+            "fieldtype": "Text",
+            "label": "Pickup Address",
+            "reqd": 1
+        },
+        {
+            "fieldname": "pickup_latitude",
+            "fieldtype": "Float",
+            "label": "Pickup Latitude"
+        },
+        {
+            "fieldname": "pickup_longitude",
+            "fieldtype": "Float",
+            "label": "Pickup Longitude"
+        },
+        {
+            "fieldname": "zone",
+            "fieldtype": "Link",
+            "options": "Waste Zone",
+            "label": "Zone",
+            "reqd": 1
+        },
+        {
+            "fieldname": "waste_details_section",
+            "fieldtype": "Section Break",
+            "label": "Waste Details"
+        },
+        {
+            "fieldname": "waste_category",
+            "fieldtype": "Link",
+            "options": "Waste Category",
+            "label": "Waste Category",
+            "reqd": 1
+        },
+        {
+            "fieldname": "estimated_weight_kg",
+            "fieldtype": "Float",
+            "label": "Estimated Weight (kg)"
+        },
+        {
+            "fieldname": "actual_weight_kg",
+            "fieldtype": "Float",
+            "label": "Actual Weight (kg)"
+        },
+        {
+            "fieldname": "number_of_bins",
+            "fieldtype": "Int",
+            "label": "Number of Bins"
+        },
+        {
+            "fieldname": "waste_description",
+            "fieldtype": "Text",
+            "label": "Waste Description"
+        },
+        {
+            "fieldname": "special_handling_required",
+            "fieldtype": "Check",
+            "label": "Special Handling Required"
+        },
+        {
+            "fieldname": "special_handling_notes",
+            "fieldtype": "Text",
+            "label": "Special Handling Notes",
+            "depends_on": "eval:doc.special_handling_required == 1"
+        },
+        {
+            "fieldname": "schedule_section",
+            "fieldtype": "Section Break",
+            "label": "Schedule & Assignment"
+        },
+        {
+            "fieldname": "scheduled_date",
+            "fieldtype": "Date",
+            "label": "Scheduled Collection Date"
+        },
+        {
+            "fieldname": "scheduled_time",
+            "fieldtype": "Time",
+            "label": "Scheduled Time"
+        },
+        {
+            "fieldname": "actual_collection_date",
+            "fieldtype": "Date",
+            "label": "Actual Collection Date"
+        },
+        {
+            "fieldname": "vehicle",
+            "fieldtype": "Link",
+            "options": "Waste Vehicle",
+            "label": "Assigned Vehicle"
+        },
+        {
+            "fieldname": "driver",
+            "fieldtype": "Link",
+            "options": "Waste Driver",
+            "label": "Assigned Driver"
+        },
+        {
+            "fieldname": "disposal_site",
+            "fieldtype": "Link",
+            "options": "Waste Disposal Site",
+            "label": "Disposal Site"
+        },
+        {
+            "fieldname": "ai_section",
+            "fieldtype": "Section Break",
+            "label": "AI Insights"
+        },
+        {
+            "fieldname": "ai_risk_score",
+            "fieldtype": "Float",
+            "label": "AI Risk Score",
+            "read_only": 1
+        },
+        {
+            "fieldname": "ai_suggested_vehicle",
+            "fieldtype": "Link",
+            "options": "Waste Vehicle",
+            "label": "AI Suggested Vehicle",
+            "read_only": 1
+        },
+        {
+            "fieldname": "ai_suggested_route",
+            "fieldtype": "Data",
+            "label": "AI Suggested Route",
+            "read_only": 1
+        },
+        {
+            "fieldname": "ai_estimated_time_min",
+            "fieldtype": "Int",
+            "label": "AI Estimated Time (min)",
+            "read_only": 1
+        },
+        {
+            "fieldname": "completion_section",
+            "fieldtype": "Section Break",
+            "label": "Completion Details"
+        },
+        {
+            "fieldname": "completion_notes",
+            "fieldtype": "Text",
+            "label": "Completion Notes"
+        },
+        {
+            "fieldname": "completion_photo",
+            "fieldtype": "Attach Image",
+            "label": "Completion Photo"
+        },
+        {
+            "fieldname": "customer_rating",
+            "fieldtype": "Select",
+            "label": "Customer Rating",
+            "options": "\n1 Star\n2 Stars\n3 Stars\n4 Stars\n5 Stars"
+        },
+        {
+            "fieldname": "billing_section",
+            "fieldtype": "Section Break",
+            "label": "Billing"
+        },
+        {
+            "fieldname": "billing_amount",
+            "fieldtype": "Currency",
+            "label": "Billing Amount"
+        },
+        {
+            "fieldname": "invoice",
+            "fieldtype": "Link",
+            "options": "Sales Invoice",
+            "label": "Sales Invoice",
+            "read_only": 1
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1,
+            "submit": 1,
+            "cancel": 1
+        },
+        {
+            "role": "Waste Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "submit": 1,
+            "cancel": 1
+        },
+        {
+            "role": "Waste Operator",
+            "read": 1,
+            "write": 1,
+            "create": 1
+        },
+        {
+            "role": "Customer",
+            "read": 1,
+            "create": 1
+        }
+    ],
+    "autoname": "naming_series:",
+    "naming_series": "WCR-.YYYY.-.MM.-.####"
+}

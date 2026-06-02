@@ -1,0 +1,85 @@
+{
+    "name": "Waste Category",
+    "module": "Waste Management",
+    "doctype": "DocType",
+    "is_submittable": 0,
+    "istable": 0,
+    "track_changes": 1,
+    "fields": [
+        {
+            "fieldname": "category_name",
+            "fieldtype": "Data",
+            "label": "Category Name",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "category_code",
+            "fieldtype": "Data",
+            "label": "Category Code",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "waste_type",
+            "fieldtype": "Select",
+            "label": "Waste Type",
+            "options": "General\nHazardous\nRecyclable\nOrganic\nE-Waste\nMedical\nConstruction",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "disposal_method",
+            "fieldtype": "Select",
+            "label": "Disposal Method",
+            "options": "Landfill\nIncineration\nRecycling\nComposting\nSpecial Treatment"
+        },
+        {
+            "fieldname": "color_code",
+            "fieldtype": "Color",
+            "label": "Color Code"
+        },
+        {
+            "fieldname": "description",
+            "fieldtype": "Text Editor",
+            "label": "Description"
+        },
+        {
+            "fieldname": "is_active",
+            "fieldtype": "Check",
+            "label": "Is Active",
+            "default": "1"
+        },
+        {
+            "fieldname": "handling_instructions",
+            "fieldtype": "Text Editor",
+            "label": "Handling Instructions"
+        },
+        {
+            "fieldname": "regulatory_compliance",
+            "fieldtype": "Text",
+            "label": "Regulatory Compliance Notes"
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1
+        },
+        {
+            "role": "Waste Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1
+        },
+        {
+            "role": "Waste Operator",
+            "read": 1
+        }
+    ],
+    "name_by_series": "WC-CAT-.####",
+    "autoname": "field:category_code"
+}

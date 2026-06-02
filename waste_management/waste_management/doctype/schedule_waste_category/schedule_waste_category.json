@@ -1,0 +1,22 @@
+{
+    "name": "Schedule Waste Category",
+    "module": "Waste Management",
+    "doctype": "DocType",
+    "istable": 1,
+    "fields": [
+        {
+            "fieldname": "waste_category",
+            "fieldtype": "Link",
+            "options": "Waste Category",
+            "label": "Waste Category",
+            "in_list_view": 1,
+            "reqd": 1
+        },
+        {
+            "fieldname": "description",
+            "fieldtype": "Data",
+            "label": "Description",
+            "in_list_view": 1
+        }
+    ]
+}

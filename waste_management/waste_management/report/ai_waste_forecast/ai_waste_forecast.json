@@ -1,0 +1,8 @@
+{
+ "doctype": "Report",
+ "name": "AI Waste Forecast",
+ "module": "Waste Management",
+ "report_type": "Script Report",
+ "is_standard": "Yes",
+ "ref_doctype": "AI Waste Prediction"
+}

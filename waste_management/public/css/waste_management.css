@@ -1,0 +1,22 @@
+/* Global Custom Styles for Waste Management App */
+
+:root {
+    --primary-color: #2ecc71;
+    --primary-hover: #27ae60;
+    --dark-neutral: #2c3e50;
+    --light-neutral: #ecf0f1;
+}
+
+/* Desk Module styling override */
+.desktop-icon[data-name="Waste Management"] {
+    background-color: var(--primary-color) !important;
+}
+
+.desk-module-card[data-module="Waste Management"] {
+    border-top: 4px solid var(--primary-color) !important;
+}
+
+/* Typography settings */
+body, input, select, textarea, button {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}

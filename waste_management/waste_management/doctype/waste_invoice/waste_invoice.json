@@ -1,0 +1,94 @@
+{
+    "name": "Waste Invoice",
+    "module": "Waste Management",
+    "doctype": "DocType",
+    "is_submittable": 1,
+    "track_changes": 1,
+    "fields": [
+        {
+            "fieldname": "customer",
+            "fieldtype": "Link",
+            "options": "Customer",
+            "label": "Customer",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "collection_request",
+            "fieldtype": "Link",
+            "options": "Waste Collection Request",
+            "label": "Waste Collection Request",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "billing_date",
+            "fieldtype": "Date",
+            "label": "Billing Date",
+            "reqd": 1,
+            "default": "Today"
+        },
+        {
+            "fieldname": "due_date",
+            "fieldtype": "Date",
+            "label": "Due Date",
+            "reqd": 1
+        },
+        {
+            "fieldname": "waste_category",
+            "fieldtype": "Link",
+            "options": "Waste Category",
+            "label": "Waste Category"
+        },
+        {
+            "fieldname": "weight_kg",
+            "fieldtype": "Float",
+            "label": "Weight (kg)"
+        },
+        {
+            "fieldname": "rate_per_kg",
+            "fieldtype": "Currency",
+            "label": "Rate per kg"
+        },
+        {
+            "fieldname": "amount",
+            "fieldtype": "Currency",
+            "label": "Total Amount",
+            "read_only": 1
+        },
+        {
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "label": "Status",
+            "options": "Draft\nUnpaid\nPaid\nCancelled",
+            "default": "Draft",
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "sales_invoice",
+            "fieldtype": "Link",
+            "options": "Sales Invoice",
+            "label": "Sales Invoice",
+            "read_only": 1
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1,
+            "submit": 1
+        },
+        {
+            "role": "Waste Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "submit": 1
+        }
+    ],
+    "autoname": "naming_series:",
+    "naming_series": "WM-INV-.YYYY.-.####"
+}

@@ -1,0 +1,108 @@
+{
+    "name": "Waste Driver",
+    "module": "Waste Management",
+    "doctype": "DocType",
+    "track_changes": 1,
+    "fields": [
+        {
+            "fieldname": "driver_name",
+            "fieldtype": "Data",
+            "label": "Driver Name",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "employee",
+            "fieldtype": "Link",
+            "options": "Employee",
+            "label": "Employee"
+        },
+        {
+            "fieldname": "user",
+            "fieldtype": "Link",
+            "options": "User",
+            "label": "System User"
+        },
+        {
+            "fieldname": "license_number",
+            "fieldtype": "Data",
+            "label": "License Number",
+            "reqd": 1
+        },
+        {
+            "fieldname": "license_expiry",
+            "fieldtype": "Date",
+            "label": "License Expiry Date",
+            "reqd": 1
+        },
+        {
+            "fieldname": "license_type",
+            "fieldtype": "Select",
+            "label": "License Type",
+            "options": "LMV\nHMV\nHGMV\nHPMV"
+        },
+        {
+            "fieldname": "contact_number",
+            "fieldtype": "Data",
+            "label": "Contact Number"
+        },
+        {
+            "fieldname": "emergency_contact",
+            "fieldtype": "Data",
+            "label": "Emergency Contact"
+        },
+        {
+            "fieldname": "driver_status",
+            "fieldtype": "Select",
+            "label": "Driver Status",
+            "options": "Available\nOn Duty\nOff Duty\nOn Leave\nInactive",
+            "default": "Available",
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "assigned_zone",
+            "fieldtype": "Link",
+            "options": "Waste Zone",
+            "label": "Assigned Zone"
+        },
+        {
+            "fieldname": "total_collections",
+            "fieldtype": "Int",
+            "label": "Total Collections",
+            "read_only": 1
+        },
+        {
+            "fieldname": "rating",
+            "fieldtype": "Float",
+            "label": "Performance Rating",
+            "read_only": 1
+        },
+        {
+            "fieldname": "joining_date",
+            "fieldtype": "Date",
+            "label": "Joining Date"
+        },
+        {
+            "fieldname": "photo",
+            "fieldtype": "Attach Image",
+            "label": "Photo"
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1
+        },
+        {
+            "role": "Waste Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1
+        }
+    ],
+    "autoname": "naming_series:",
+    "naming_series": "WM-DRV-.####"
+}
