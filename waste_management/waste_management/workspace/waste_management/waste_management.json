@@ -10,152 +10,6 @@
  "is_hidden": 0,
  "is_standard": 1,
  "label": "Waste Management",
- "links": [
-  {
-   "dependencies": "",
-   "description": "Dashboard for Waste Management",
-   "hidden": 0,
-   "icon": "dashboard",
-   "is_query_report": 0,
-   "label": "Dashboard",
-   "link_count": 0,
-   "link_to": "waste_dashboard",
-   "link_type": "Page",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "description": "Manage Waste Collection Requests",
-   "hidden": 0,
-   "icon": "form",
-   "is_query_report": 0,
-   "label": "Collection Requests",
-   "link_count": 0,
-   "link_to": "Waste Collection Request",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "description": "Manage Waste Collection Schedules",
-   "hidden": 0,
-   "icon": "calendar",
-   "is_query_report": 0,
-   "label": "Collection Schedules",
-   "link_count": 0,
-   "link_to": "Waste Collection Schedule",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "description": "AI Predictions for Waste",
-   "hidden": 0,
-   "icon": "line-chart",
-   "is_query_report": 0,
-   "label": "AI Waste Prediction",
-   "link_count": 0,
-   "link_to": "AI Waste Prediction",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "description": "Waste Categories",
-   "hidden": 0,
-   "icon": "tag",
-   "is_query_report": 0,
-   "label": "Waste Category",
-   "link_count": 0,
-   "link_to": "Waste Category",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "description": "Waste Zones",
-   "hidden": 0,
-   "icon": "map",
-   "is_query_report": 0,
-   "label": "Waste Zone",
-   "link_count": 0,
-   "link_to": "Waste Zone",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "description": "Waste Vehicles",
-   "hidden": 0,
-   "icon": "car",
-   "is_query_report": 0,
-   "label": "Waste Vehicle",
-   "link_count": 0,
-   "link_to": "Waste Vehicle",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "description": "Waste Drivers",
-   "hidden": 0,
-   "icon": "user",
-   "is_query_report": 0,
-   "label": "Waste Driver",
-   "link_count": 0,
-   "link_to": "Waste Driver",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "description": "Waste Routes",
-   "hidden": 0,
-   "icon": "node",
-   "is_query_report": 0,
-   "label": "Waste Route",
-   "link_count": 0,
-   "link_to": "Waste Route",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "description": "Disposal Sites",
-   "hidden": 0,
-   "icon": "home",
-   "is_query_report": 0,
-   "label": "Waste Disposal Site",
-   "link_count": 0,
-   "link_to": "Waste Disposal Site",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "description": "Complaints",
-   "hidden": 0,
-   "icon": "warning",
-   "is_query_report": 0,
-   "label": "Waste Complaint",
-   "link_count": 0,
-   "link_to": "Waste Complaint",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  }
- ],
- "content": "[{\"id\":\"d131f13b63\",\"type\":\"header\",\"data\":{\"text\":\"Waste Management\",\"level\":2}}]",
  "module": "Waste Management",
  "name": "Waste Management",
  "owner": "Administrator",
@@ -167,6 +21,8 @@
   }
  ],
  "sequence_id": 10.0,
+ "title": "Waste Management",
+ "content": "[{\"id\":\"cb-core\",\"type\":\"card\",\"data\":{\"card_name\":\"Core Operations\",\"col\":12}},{\"id\":\"cb-master\",\"type\":\"card\",\"data\":{\"card_name\":\"Master Data\",\"col\":12}},{\"id\":\"cb-logistics\",\"type\":\"card\",\"data\":{\"card_name\":\"Resources & Logistics\",\"col\":12}},{\"id\":\"cb-others\",\"type\":\"card\",\"data\":{\"card_name\":\"Additional Operations\",\"col\":12}}]",
  "shortcuts": [
   {
    "color": "Grey",
@@ -184,5 +40,145 @@
    "type": "Page"
   }
  ],
- "title": "Waste Management"
+ "links": [
+  {
+   "hidden": 0,
+   "idx": 1,
+   "is_query_report": 0,
+   "label": "Core Operations",
+   "link_count": 0,
+   "onboard": 0,
+   "title": "Core Operations",
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "idx": 2,
+   "label": "Dashboard",
+   "link_to": "waste_dashboard",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "idx": 3,
+   "label": "Collection Requests",
+   "link_to": "Waste Collection Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "idx": 4,
+   "label": "Collection Schedules",
+   "link_to": "Waste Collection Schedule",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "idx": 5,
+   "label": "AI Waste Prediction",
+   "link_to": "AI Waste Prediction",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "idx": 6,
+   "is_query_report": 0,
+   "label": "Master Data",
+   "link_count": 0,
+   "onboard": 0,
+   "title": "Master Data",
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "idx": 7,
+   "label": "Waste Category",
+   "link_to": "Waste Category",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "idx": 8,
+   "label": "Waste Zone",
+   "link_to": "Waste Zone",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "idx": 9,
+   "is_query_report": 0,
+   "label": "Resources & Logistics",
+   "link_count": 0,
+   "onboard": 0,
+   "title": "Resources & Logistics",
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "idx": 10,
+   "label": "Waste Vehicle",
+   "link_to": "Waste Vehicle",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "idx": 11,
+   "label": "Waste Driver",
+   "link_to": "Waste Driver",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "idx": 12,
+   "label": "Waste Route",
+   "link_to": "Waste Route",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "idx": 13,
+   "is_query_report": 0,
+   "label": "Additional Operations",
+   "link_count": 0,
+   "onboard": 0,
+   "title": "Additional Operations",
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "idx": 14,
+   "label": "Waste Disposal Site",
+   "link_to": "Waste Disposal Site",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "idx": 15,
+   "label": "Waste Complaint",
+   "link_to": "Waste Complaint",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ]
 }
