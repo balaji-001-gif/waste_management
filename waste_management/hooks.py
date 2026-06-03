@@ -25,11 +25,6 @@ doc_events = {
             "waste_management.waste_management.doctype.waste_collection_request.waste_collection_request.on_cancel",
         ],
     },
-    "Waste Collection Schedule": {
-        "before_save": [
-            "waste_management.waste_management.doctype.waste_collection_schedule.waste_collection_schedule.before_save",
-        ],
-    },
 }
 
 # Scheduled Tasks
@@ -83,9 +78,7 @@ override_whitelisted_methods = {}
 
 # Jinja
 jinja = {
-    "methods": [
-        "waste_management.waste_management.utils.jinja_methods",
-    ]
+    "methods": "waste_management.waste_management.utils.jinja_methods",
 }
 
 # On app install

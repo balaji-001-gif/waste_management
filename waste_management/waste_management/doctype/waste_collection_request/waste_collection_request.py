@@ -128,3 +128,18 @@ def has_permission(doc, ptype, user):
         if customer_user == user:
             return True
     return False
+
+
+def on_submit(doc, method=None):
+    """Module-level doc_event hook called on submit of Waste Collection Request."""
+    doc.status = "Assigned"
+    doc.update_vehicle_status()
+    doc.send_confirmation_notification()
+    doc.create_sales_invoice_if_needed()
+
+
+def on_cancel(doc, method=None):
+    """Module-level doc_event hook called on cancel of Waste Collection Request."""
+    doc.status = "Cancelled"
+    doc.release_vehicle()
+
