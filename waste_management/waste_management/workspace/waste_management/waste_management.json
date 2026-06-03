@@ -1,0 +1,187 @@
+{
+ "creation": "2024-01-01 00:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "truck",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "is_standard": 1,
+ "label": "Waste Management",
+ "links": [
+  {
+   "dependencies": "",
+   "description": "Dashboard for Waste Management",
+   "hidden": 0,
+   "icon": "dashboard",
+   "is_query_report": 0,
+   "label": "Dashboard",
+   "link_count": 0,
+   "link_to": "waste_dashboard",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "description": "Manage Waste Collection Requests",
+   "hidden": 0,
+   "icon": "form",
+   "is_query_report": 0,
+   "label": "Collection Requests",
+   "link_count": 0,
+   "link_to": "Waste Collection Request",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "description": "Manage Waste Collection Schedules",
+   "hidden": 0,
+   "icon": "calendar",
+   "is_query_report": 0,
+   "label": "Collection Schedules",
+   "link_count": 0,
+   "link_to": "Waste Collection Schedule",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "description": "AI Predictions for Waste",
+   "hidden": 0,
+   "icon": "line-chart",
+   "is_query_report": 0,
+   "label": "AI Waste Prediction",
+   "link_count": 0,
+   "link_to": "AI Waste Prediction",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "description": "Waste Categories",
+   "hidden": 0,
+   "icon": "tag",
+   "is_query_report": 0,
+   "label": "Waste Category",
+   "link_count": 0,
+   "link_to": "Waste Category",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "description": "Waste Zones",
+   "hidden": 0,
+   "icon": "map",
+   "is_query_report": 0,
+   "label": "Waste Zone",
+   "link_count": 0,
+   "link_to": "Waste Zone",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "description": "Waste Vehicles",
+   "hidden": 0,
+   "icon": "car",
+   "is_query_report": 0,
+   "label": "Waste Vehicle",
+   "link_count": 0,
+   "link_to": "Waste Vehicle",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "description": "Waste Drivers",
+   "hidden": 0,
+   "icon": "user",
+   "is_query_report": 0,
+   "label": "Waste Driver",
+   "link_count": 0,
+   "link_to": "Waste Driver",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "description": "Waste Routes",
+   "hidden": 0,
+   "icon": "node",
+   "is_query_report": 0,
+   "label": "Waste Route",
+   "link_count": 0,
+   "link_to": "Waste Route",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "description": "Disposal Sites",
+   "hidden": 0,
+   "icon": "home",
+   "is_query_report": 0,
+   "label": "Waste Disposal Site",
+   "link_count": 0,
+   "link_to": "Waste Disposal Site",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "description": "Complaints",
+   "hidden": 0,
+   "icon": "warning",
+   "is_query_report": 0,
+   "label": "Waste Complaint",
+   "link_count": 0,
+   "link_to": "Waste Complaint",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "module": "Waste Management",
+ "name": "Waste Management",
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "sequence_id": 10.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "format": "{} Open",
+   "label": "Pending Requests",
+   "link_to": "Waste Collection Request",
+   "stats_filter": "{\"status\":\"Pending\"}",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "format": "{}",
+   "label": "Dashboard",
+   "link_to": "waste_dashboard",
+   "type": "Page"
+  }
+ ],
+ "title": "Waste Management"
+}
