@@ -34,7 +34,7 @@
    "link_count": 0,
    "link_to": "Waste Collection Request",
    "link_type": "DocType",
-   "onboard": 1,
+   "onboard": 0,
    "type": "Link"
   },
   {
@@ -155,6 +155,7 @@
    "type": "Link"
   }
  ],
+ "content": "[{\"id\":\"d131f13b63\",\"type\":\"header\",\"data\":{\"text\":\"Waste Management\",\"level\":2}}]",
  "module": "Waste Management",
  "name": "Waste Management",
  "owner": "Administrator",
