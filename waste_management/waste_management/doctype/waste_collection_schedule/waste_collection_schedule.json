@@ -98,6 +98,5 @@
             "submit": 1
         }
     ],
-    "autoname": "naming_series:",
-    "naming_series": "WCS-.YYYY.-.####"
+    "autoname": "WCS-.YYYY.-.####"
 }

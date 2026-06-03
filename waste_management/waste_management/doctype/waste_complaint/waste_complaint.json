@@ -138,6 +138,5 @@
             "create": 1
         }
     ],
-    "autoname": "naming_series:",
-    "naming_series": "WCP-.YYYY.-.####"
+    "autoname": "WCP-.YYYY.-.####"
 }

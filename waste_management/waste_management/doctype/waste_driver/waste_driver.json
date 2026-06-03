@@ -103,6 +103,5 @@
             "create": 1
         }
     ],
-    "autoname": "naming_series:",
-    "naming_series": "WM-DRV-.####"
+    "autoname": "WM-DRV-.####"
 }

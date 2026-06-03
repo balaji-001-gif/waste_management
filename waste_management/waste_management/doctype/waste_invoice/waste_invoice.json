@@ -89,6 +89,5 @@
             "submit": 1
         }
     ],
-    "autoname": "naming_series:",
-    "naming_series": "WM-INV-.YYYY.-.####"
+    "autoname": "WM-INV-.YYYY.-.####"
 }
