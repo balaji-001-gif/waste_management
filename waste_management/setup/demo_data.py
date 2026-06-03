@@ -35,11 +35,11 @@ def generate_demo_data():
             
     # 3. Waste Disposal Sites
     sites = [
-        {"site_name": "Central Landfill", "location": "Perungudi", "capacity_tons": 50000},
-        {"site_name": "North Processing Plant", "location": "Kodungaiyur", "capacity_tons": 45000},
-        {"site_name": "Eco Recycling Center", "location": "Guindy", "capacity_tons": 10000},
-        {"site_name": "South Composting Yard", "location": "Pallikaranai", "capacity_tons": 15000},
-        {"site_name": "E-Waste Dismantling Unit", "location": "Ambattur", "capacity_tons": 5000},
+        {"site_name": "Central Landfill", "site_code": "CL-01", "location": "Perungudi", "capacity_tons": 50000},
+        {"site_name": "North Processing Plant", "site_code": "NPP-01", "location": "Kodungaiyur", "capacity_tons": 45000},
+        {"site_name": "Eco Recycling Center", "site_code": "ERC-01", "location": "Guindy", "capacity_tons": 10000},
+        {"site_name": "South Composting Yard", "site_code": "SCY-01", "location": "Pallikaranai", "capacity_tons": 15000},
+        {"site_name": "E-Waste Dismantling Unit", "site_code": "EWDU-01", "location": "Ambattur", "capacity_tons": 5000},
     ]
     for s in sites:
         if not frappe.db.exists("Waste Disposal Site", {"site_name": s["site_name"]}):
