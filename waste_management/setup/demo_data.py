@@ -22,11 +22,11 @@ def generate_demo_data():
             
     # 2. Waste Drivers
     drivers = [
-        {"driver_name": "Ramesh Kumar", "license_number": "TN-LIC-1001", "phone": "9876543210", "driver_status": "Available"},
-        {"driver_name": "Suresh Singh", "license_number": "TN-LIC-1002", "phone": "9876543211", "driver_status": "Available"},
-        {"driver_name": "Murugan M", "license_number": "TN-LIC-1003", "phone": "9876543212", "driver_status": "Available"},
-        {"driver_name": "Abdul Rahman", "license_number": "TN-LIC-1004", "phone": "9876543213", "driver_status": "Available"},
-        {"driver_name": "John Doe", "license_number": "TN-LIC-1005", "phone": "9876543214", "driver_status": "On Leave"},
+        {"driver_name": "Ramesh Kumar", "license_number": "TN-LIC-1001", "phone": "9876543210", "driver_status": "Available", "license_expiry": add_days(today(), 365)},
+        {"driver_name": "Suresh Singh", "license_number": "TN-LIC-1002", "phone": "9876543211", "driver_status": "Available", "license_expiry": add_days(today(), 365)},
+        {"driver_name": "Murugan M", "license_number": "TN-LIC-1003", "phone": "9876543212", "driver_status": "Available", "license_expiry": add_days(today(), 365)},
+        {"driver_name": "Abdul Rahman", "license_number": "TN-LIC-1004", "phone": "9876543213", "driver_status": "Available", "license_expiry": add_days(today(), 365)},
+        {"driver_name": "John Doe", "license_number": "TN-LIC-1005", "phone": "9876543214", "driver_status": "On Leave", "license_expiry": add_days(today(), 365)},
     ]
     for d in drivers:
         if not frappe.db.exists("Waste Driver", {"license_number": d["license_number"]}):
