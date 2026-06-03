@@ -83,15 +83,15 @@ class WasteCollectionSchedule(Document):
             })
             request.insert(ignore_permissions=True)
 
-    @frappe.whitelist()
-    def auto_generate_schedule():
-        """Scheduled task"""
-        active_schedules = frappe.get_all(
-            "Waste Collection Schedule",
-            filters={"is_active": 1, "docstatus": 1},
-            fields=["name"]
-        )
-        for schedule in active_schedules:
-            doc = frappe.get_doc("Waste Collection Schedule", schedule.name)
-            tomorrow = add_days(today(), 1)
-            doc._create_request_for_date(getdate(tomorrow))
+def auto_generate_schedule():
+    """Module-level scheduled task: creates tomorrow's collection requests for all active schedules."""
+    active_schedules = frappe.get_all(
+        "Waste Collection Schedule",
+        filters={"is_active": 1, "docstatus": 1},
+        fields=["name"]
+    )
+    for schedule in active_schedules:
+        doc = frappe.get_doc("Waste Collection Schedule", schedule.name)
+        tomorrow = add_days(today(), 1)
+        doc._create_request_for_date(getdate(tomorrow))
+    frappe.db.commit()

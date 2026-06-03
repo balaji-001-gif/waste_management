@@ -34,26 +34,6 @@ class WasteVehicle(Document):
                 )
 
     @frappe.whitelist()
-    def update_vehicle_status():
-        """Scheduled task to update vehicle status"""
-        vehicles = frappe.get_all(
-            "Waste Vehicle",
-            filters={"vehicle_status": "In Service"},
-            fields=["name", "vehicle_number"]
-        )
-        for vehicle in vehicles:
-            active_collections = frappe.db.count(
-                "Waste Collection Request",
-                filters={
-                    "vehicle": vehicle.name,
-                    "status": ["in", ["In Progress", "Assigned"]],
-                    "docstatus": 1
-                }
-            )
-            if not active_collections:
-                frappe.db.set_value("Waste Vehicle", vehicle.name, "vehicle_status", "Available")
-
-    @frappe.whitelist()
     def get_vehicle_location(self):
         return {
             "latitude": self.current_latitude,
@@ -61,3 +41,24 @@ class WasteVehicle(Document):
             "vehicle_number": self.vehicle_number,
             "status": self.vehicle_status
         }
+
+
+def update_vehicle_status():
+    """Module-level scheduled task to update vehicle status based on active collections."""
+    vehicles = frappe.get_all(
+        "Waste Vehicle",
+        filters={"vehicle_status": "In Service"},
+        fields=["name", "vehicle_number"]
+    )
+    for vehicle in vehicles:
+        active_collections = frappe.db.count(
+            "Waste Collection Request",
+            filters={
+                "vehicle": vehicle.name,
+                "status": ["in", ["In Progress", "Assigned"]],
+                "docstatus": 1
+            }
+        )
+        if not active_collections:
+            frappe.db.set_value("Waste Vehicle", vehicle.name, "vehicle_status", "Available")
+    frappe.db.commit()

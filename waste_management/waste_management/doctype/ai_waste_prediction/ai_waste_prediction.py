@@ -20,81 +20,74 @@ class AIWastePrediction(Document):
             self.accuracy_percentage = 0
             self.is_validated = 0
 
-    @frappe.whitelist()
-    def run_daily_prediction():
-        """Scheduled task run daily to generate predictions for tomorrow"""
-        target_date = add_days(today(), 1)
-        target_datetime = getdate(target_date)
-        day_of_week = target_datetime.weekday()
-        month = target_datetime.month
 
-        # Fetch combinations of active zones and active categories
-        zones = frappe.get_all("Waste Zone", filters={"is_active": 1}, fields=["name", "estimated_waste_per_day_kg"])
-        categories = frappe.get_all("Waste Category", filters={"is_active": 1}, fields=["name", "waste_type"])
+def run_daily_prediction():
+    """Module-level scheduled task run daily to generate predictions for tomorrow."""
+    target_date = add_days(today(), 1)
+    target_datetime = getdate(target_date)
+    day_of_week = target_datetime.weekday()
+    month = target_datetime.month
 
-        for zone in zones:
-            for cat in categories:
-                # Query historical completed requests for this zone and category
-                history = frappe.db.sql("""
-                    SELECT request_date, actual_weight_kg
-                    FROM `tabWaste Collection Request`
-                    WHERE zone = %s AND waste_category = %s AND status = 'Completed' AND docstatus = 1
-                    ORDER BY request_date DESC LIMIT 60
-                """, (zone.name, cat.name), as_dict=True)
+    zones = frappe.get_all("Waste Zone", filters={"is_active": 1}, fields=["name", "estimated_waste_per_day_kg"])
+    categories = frappe.get_all("Waste Category", filters={"is_active": 1}, fields=["name", "waste_type"])
 
-                predicted_weight = 0.0
+    for zone in zones:
+        for cat in categories:
+            history = frappe.db.sql("""
+                SELECT request_date, actual_weight_kg
+                FROM `tabWaste Collection Request`
+                WHERE zone = %s AND waste_category = %s AND status = 'Completed' AND docstatus = 1
+                ORDER BY request_date DESC LIMIT 60
+            """, (zone.name, cat.name), as_dict=True)
 
-                if len(history) >= 5:
-                    try:
-                        from sklearn.linear_model import LinearRegression
-                        df = pd.DataFrame(history)
-                        df['date_obj'] = pd.to_datetime(df['request_date'])
-                        df['day_of_week'] = df['date_obj'].dt.dayofweek
-                        df['month'] = df['date_obj'].dt.month
+            predicted_weight = 0.0
 
-                        X = df[['day_of_week', 'month']].values
-                        y = df['actual_weight_kg'].values
+            if len(history) >= 5:
+                try:
+                    from sklearn.linear_model import LinearRegression
+                    df = pd.DataFrame(history)
+                    df['date_obj'] = pd.to_datetime(df['request_date'])
+                    df['day_of_week'] = df['date_obj'].dt.dayofweek
+                    df['month'] = df['date_obj'].dt.month
 
-                        model = LinearRegression()
-                        model.fit(X, y)
+                    X = df[['day_of_week', 'month']].values
+                    y = df['actual_weight_kg'].values
 
-                        # Predict for tomorrow
-                        prediction_input = np.array([[day_of_week, month]])
-                        predicted_weight = flt(model.predict(prediction_input)[0])
-                        predicted_weight = max(1.0, predicted_weight)  # non-negative
-                    except Exception as e:
-                        frappe.log_error(f"Sklearn prediction failed: {str(e)}", "Waste AI Engine")
-                        # Fallback to simple average
-                        predicted_weight = flt(np.mean([r['actual_weight_kg'] for r in history]))
-                elif history:
-                    # Not enough historical points, use simple average
+                    model = LinearRegression()
+                    model.fit(X, y)
+
+                    prediction_input = np.array([[day_of_week, month]])
+                    predicted_weight = flt(model.predict(prediction_input)[0])
+                    predicted_weight = max(1.0, predicted_weight)
+                except Exception as e:
+                    frappe.log_error(f"Sklearn prediction failed: {str(e)}", "Waste AI Engine")
                     predicted_weight = flt(np.mean([r['actual_weight_kg'] for r in history]))
-                else:
-                    # Fallback to estimated zone volume divided across categories
-                    predicted_weight = flt(zone.estimated_waste_per_day_kg or 100.0) / flt(len(categories) or 1)
+            elif history:
+                predicted_weight = flt(np.mean([r['actual_weight_kg'] for r in history]))
+            else:
+                predicted_weight = flt(zone.estimated_waste_per_day_kg or 100.0) / flt(len(categories) or 1)
 
-                # Check if prediction document already exists
-                existing = frappe.db.exists("AI Waste Prediction", {
+            existing = frappe.db.exists("AI Waste Prediction", {
+                "prediction_date": target_date,
+                "zone": zone.name,
+                "waste_category": cat.name
+            })
+
+            if not existing:
+                pred_doc = frappe.get_doc({
+                    "doctype": "AI Waste Prediction",
                     "prediction_date": target_date,
                     "zone": zone.name,
-                    "waste_category": cat.name
+                    "waste_category": cat.name,
+                    "predicted_weight_kg": round(predicted_weight, 2),
+                    "actual_weight_kg": 0.0
                 })
+                pred_doc.insert(ignore_permissions=True)
 
-                if not existing:
-                    pred_doc = frappe.get_doc({
-                        "doctype": "AI Waste Prediction",
-                        "prediction_date": target_date,
-                        "zone": zone.name,
-                        "waste_category": cat.name,
-                        "predicted_weight_kg": round(predicted_weight, 2),
-                        "actual_weight_kg": 0.0
-                    })
-                    pred_doc.insert(ignore_permissions=True)
+    frappe.db.commit()
 
-    @frappe.whitelist()
-    def retrain_model():
-        """Weekly scheduled task. Updates models or logs analytics updates"""
-        # In this implementation, retraining is performed on-the-fly inside run_daily_prediction
-        # here we log the audit message of the weekly model updates.
-        frappe.logger().info("AI Waste Prediction model retrained successfully and updated for weekly adjustments.")
-        return {"status": "success", "message": "Models retrained."}
+
+def retrain_model():
+    """Module-level weekly scheduled task for model retraining audit."""
+    frappe.logger().info("AI Waste Prediction model retrained successfully and updated for weekly adjustments.")
+    return {"status": "success", "message": "Models retrained."}
