@@ -8,12 +8,12 @@ def generate_demo_data():
     
     # 1. Waste Vehicles
     vehicles = [
-        {"vehicle_number": "TN-01-AB-1234", "vehicle_type": "Compactor", "capacity_kg": 5000, "vehicle_status": "Available", "next_service_date": add_days(today(), 30)},
-        {"vehicle_number": "TN-02-XY-5678", "vehicle_type": "Tipper", "capacity_kg": 3000, "vehicle_status": "Available", "next_service_date": add_days(today(), 15)},
+        {"vehicle_number": "TN-01-AB-1234", "vehicle_type": "Compactor Truck", "capacity_kg": 5000, "vehicle_status": "Available", "next_service_date": add_days(today(), 30)},
+        {"vehicle_number": "TN-02-XY-5678", "vehicle_type": "Tipper Truck", "capacity_kg": 3000, "vehicle_status": "Available", "next_service_date": add_days(today(), 15)},
         {"vehicle_number": "TN-03-LM-9012", "vehicle_type": "Mini Truck", "capacity_kg": 1500, "vehicle_status": "Available", "next_service_date": add_days(today(), 45)},
-        {"vehicle_number": "TN-04-QR-3456", "vehicle_type": "Compactor", "capacity_kg": 6000, "vehicle_status": "Available", "next_service_date": add_days(today(), 60)},
-        {"vehicle_number": "TN-05-ST-7890", "vehicle_type": "Dumper", "capacity_kg": 8000, "vehicle_status": "Available", "next_service_date": add_days(today(), 10)},
-        {"vehicle_number": "TN-06-UV-2345", "vehicle_type": "Tipper", "capacity_kg": 4000, "vehicle_status": "In Service", "next_service_date": add_days(today(), -2)},
+        {"vehicle_number": "TN-04-QR-3456", "vehicle_type": "Compactor Truck", "capacity_kg": 6000, "vehicle_status": "Available", "next_service_date": add_days(today(), 60)},
+        {"vehicle_number": "TN-05-ST-7890", "vehicle_type": "Handcart", "capacity_kg": 8000, "vehicle_status": "Available", "next_service_date": add_days(today(), 10)},
+        {"vehicle_number": "TN-06-UV-2345", "vehicle_type": "Tipper Truck", "capacity_kg": 4000, "vehicle_status": "In Service", "next_service_date": add_days(today(), -2)},
     ]
     for v in vehicles:
         if not frappe.db.exists("Waste Vehicle", {"vehicle_number": v["vehicle_number"]}):
